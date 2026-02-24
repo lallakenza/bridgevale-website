@@ -609,6 +609,39 @@
         .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.82rem; transition: color 0.3s; }
         .footer-links a:hover { color: var(--gold); }
 
+        /* ══════════════════ LEGAL ══════════════════ */
+        .legal {
+            background: var(--off-white); padding: 5rem 5%;
+            border-top: 1px solid var(--gray-light);
+        }
+        .legal-inner { max-width: 1200px; margin: 0 auto; }
+        .legal-inner h3 {
+            font-family: 'Playfair Display', serif; font-size: 1.4rem;
+            color: var(--navy); margin-bottom: 2rem; font-weight: 700;
+        }
+        .legal-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .legal-block {
+            background: var(--white); border-radius: 12px; padding: 1.8rem;
+            border: 1px solid var(--gray-light);
+        }
+        .legal-block h4 {
+            font-size: 0.92rem; font-weight: 700; color: var(--navy);
+            margin-bottom: 0.8rem;
+        }
+        .legal-block p {
+            font-size: 0.82rem; color: var(--text-light); line-height: 1.7;
+            margin-bottom: 0.6rem;
+        }
+        .legal-block p:last-child { margin-bottom: 0; }
+        .legal-block a { color: var(--gold); text-decoration: none; }
+        .legal-block a:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .legal-grid { grid-template-columns: 1fr; }
+        }
+
         /* ══════════════════ ANIMATIONS ══════════════════ */
         .fade-in {
             opacity: 0; transform: translateY(25px);
@@ -1115,6 +1148,38 @@
     </div>
 </section>
 
+<!-- ═══ LEGAL ═══ -->
+<section class="legal" id="legal">
+    <div class="legal-inner">
+        <h3>Legal Notice</h3>
+        <div class="legal-grid">
+            <div class="legal-block">
+                <h4>Company Information</h4>
+                <p><strong>Bridgevale Consulting Ltd</strong> is a Private Limited Company registered in England and Wales under company number <strong>16914928</strong>.</p>
+                <p>Registered office: 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom.</p>
+                <p>Incorporated on 16 December 2025.</p>
+                <p>SIC codes: 62020 (IT Consultancy), 62030 (Computer Facilities Management), 62090 (Other IT Services), 70229 (Management Consultancy).</p>
+            </div>
+            <div class="legal-block">
+                <h4>Role &amp; Intermediary Status</h4>
+                <p>Bridgevale Consulting Ltd operates as an <strong>intermediary platform</strong> connecting independent consultants with client organizations seeking specialized expertise. Bridgevale does not substitute for the consultant's own professional judgment or liability.</p>
+                <p>Consultants listed on this website are independent professionals. Bridgevale facilitates the matching, contractual framework, and administrative coordination between consultants and end clients — similar to platforms such as Malt or Freelance.com.</p>
+                <p>Bridgevale is not the employer of the consultants presented on this platform. Each engagement is governed by a separate service agreement between the relevant parties.</p>
+            </div>
+            <div class="legal-block">
+                <h4>Liability &amp; Disclaimer</h4>
+                <p>Bridgevale Consulting Ltd acts in good faith to match qualified professionals with client needs. However, Bridgevale does not guarantee the outcomes of any engagement and shall not be held liable for any direct or indirect damages arising from the services delivered by independent consultants.</p>
+                <p>All information presented on this website is provided for general informational purposes. Bridgevale reserves the right to update consultant availability, profiles, and service descriptions at any time without prior notice.</p>
+            </div>
+            <div class="legal-block">
+                <h4>Data Protection</h4>
+                <p>Any personal data collected through this website (via email inquiries) is processed in accordance with applicable data protection regulations, including the UK GDPR. Data is used solely for the purpose of responding to your inquiry and is not shared with third parties without your consent.</p>
+                <p>For any data-related requests, please contact: <a href="mailto:operations@bridgevaleconsulting.com">operations@bridgevaleconsulting.com</a>.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- ═══ FOOTER ═══ -->
 <footer>
     <div class="footer-inner">
@@ -1125,6 +1190,7 @@
             <a href="#expertise">Expertise</a>
             <a href="#experts">Our Experts</a>
             <a href="#contact">Contact</a>
+            <a href="#legal">Legal</a>
         </div>
         <p>&copy; 2026 Bridgevale Consulting Ltd. All rights reserved.</p>
     </div>
