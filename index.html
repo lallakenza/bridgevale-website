@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridgevale Consulting — Expert Consultant Support Network</title>
+    <meta name="description" content="Bridgevale Consulting connects consultants and organizations to a trusted network of senior specialists. Ad-hoc expert support, staffing, and SAP expertise across Europe and MENA.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #0B1D3A;
+            --navy-mid: #132D5E;
+            --navy-light: #1A3A6E;
+            --gold: #C8A45E;
+            --gold-light: #E0C882;
+            --gold-pale: rgba(200,164,94,0.08);
+            --white: #FFFFFF;
+            --off-white: #F8F6F1;
+            --cream: #FAF8F4;
+            --gray: #8A8F9C;
+            --gray-light: #E8E8EC;
+            --gray-lighter: #F2F2F5;
+            --text: #2C3345;
+            --text-light: #5A6178;
+            --text-muted: #7C8298;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text); line-height: 1.7;
+            overflow-x: hidden; background: var(--white);
+        }
+
+        /* ══════════════════ NAV ══════════════════ */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 1.4rem 5%;
+            display: flex; align-items: center; justify-content: space-between;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        nav.scrolled {
+            background: rgba(11, 29, 58, 0.97);
+            backdrop-filter: blur(16px);
+            padding: 0.8rem 5%;
+            box-shadow: 0 4px 40px rgba(0,0,0,0.2);
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem; font-weight: 800;
+            color: var(--white); text-decoration: none;
+            letter-spacing: 0.02em; display: flex; align-items: center; gap: 0.1em;
+        }
+        .logo-bridge { color: var(--white); }
+        .logo-vale { color: var(--gold); }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a {
+            color: rgba(255,255,255,0.75); text-decoration: none;
+            font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em;
+            text-transform: uppercase; transition: color 0.3s;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 1.5px; background: var(--gold);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta {
+            background: var(--gold) !important; color: var(--navy) !important;
+            padding: 0.6rem 1.6rem !important; border-radius: 6px;
+            font-weight: 600 !important; transition: all 0.3s !important;
+        }
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(200,164,94,0.4); }
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+        .mobile-toggle span { display: block; width: 22px; height: 2px; background: white; margin: 5px 0; transition: 0.3s; border-radius: 2px; }
+
+        /* ══════════════════ HERO ══════════════════ */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(160deg, #060F1F 0%, var(--navy) 30%, var(--navy-mid) 60%, var(--navy-light) 100%);
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden; padding: 8rem 5% 6rem;
+        }
+        .hero-bg-grid {
+            position: absolute; inset: 0; opacity: 0.03;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        .hero-glow {
+            position: absolute; top: -30%; right: -15%;
+            width: 70vw; height: 70vw;
+            background: radial-gradient(circle, rgba(200,164,94,0.07) 0%, transparent 65%);
+            border-radius: 50%;
+        }
+        .hero-glow-2 {
+            position: absolute; bottom: -20%; left: -15%;
+            width: 50vw; height: 50vw;
+            background: radial-gradient(circle, rgba(200,164,94,0.04) 0%, transparent 65%);
+            border-radius: 50%;
+        }
+        .hero-inner {
+            max-width: 1300px; width: 100%; position: relative; z-index: 2;
+            display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center;
+        }
+        .hero-content { animation: fadeUp 1s ease; }
+        .hero-tag {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(200,164,94,0.1); border: 1px solid rgba(200,164,94,0.2);
+            padding: 0.45rem 1.2rem; border-radius: 50px;
+            font-size: 0.78rem; font-weight: 600; color: var(--gold);
+            text-transform: uppercase; letter-spacing: 0.08em;
+            margin-bottom: 1.8rem;
+        }
+        .hero-tag .pulse {
+            width: 6px; height: 6px; background: var(--gold);
+            border-radius: 50%; animation: pulse 2s infinite;
+        }
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.6rem, 5vw, 3.8rem);
+            color: var(--white); line-height: 1.12;
+            margin-bottom: 1.6rem; font-weight: 700;
+        }
+        .hero-content h1 em {
+            font-style: normal;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-content .sub {
+            color: rgba(255,255,255,0.6); font-size: 1.08rem;
+            max-width: 520px; margin-bottom: 2.5rem; line-height: 1.8;
+        }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn-primary {
+            background: var(--gold); color: var(--navy);
+            padding: 0.9rem 2.4rem; border-radius: 8px; border: none;
+            font-size: 0.92rem; font-weight: 600; cursor: pointer;
+            text-decoration: none; transition: all 0.3s; display: inline-flex;
+            align-items: center; gap: 0.5rem; font-family: 'Inter', sans-serif;
+        }
+        .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,164,94,0.35); }
+        .btn-outline {
+            background: transparent; color: var(--white);
+            padding: 0.9rem 2.4rem; border-radius: 8px;
+            border: 1.5px solid rgba(255,255,255,0.25);
+            font-size: 0.92rem; font-weight: 500; cursor: pointer;
+            text-decoration: none; transition: all 0.3s; display: inline-flex;
+            align-items: center; gap: 0.5rem; font-family: 'Inter', sans-serif;
+        }
+        .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+        .btn-arrow { font-size: 1.1rem; transition: transform 0.3s; }
+        .btn-primary:hover .btn-arrow, .btn-outline:hover .btn-arrow { transform: translateX(3px); }
+
+        /* Hero visual */
+        .hero-visual { display: flex; justify-content: center; align-items: center; animation: fadeUp 1s ease 0.2s both; }
+        .hero-graphic { width: 100%; max-width: 420px; aspect-ratio: 1; position: relative; }
+        .orbit { position: absolute; border-radius: 50%; border: 1px solid rgba(200,164,94,0.12); }
+        .orbit:nth-child(1) { inset: 0; animation: spin 30s linear infinite; }
+        .orbit:nth-child(2) { inset: 14%; animation: spin 22s linear infinite reverse; border-color: rgba(200,164,94,0.08); }
+        .orbit:nth-child(3) { inset: 28%; animation: spin 18s linear infinite; border-color: rgba(200,164,94,0.15); }
+        .orbit-dot {
+            position: absolute; width: 8px; height: 8px;
+            background: var(--gold); border-radius: 50%;
+            box-shadow: 0 0 12px rgba(200,164,94,0.6);
+        }
+        .orbit:nth-child(1) .orbit-dot { top: 50%; left: -4px; }
+        .orbit:nth-child(2) .orbit-dot { bottom: 8%; right: 8%; }
+        .orbit:nth-child(3) .orbit-dot { top: 8%; right: 15%; }
+        .hero-center {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            width: 100px; height: 100px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 12px 40px rgba(200,164,94,0.35);
+        }
+        .hero-center span {
+            font-family: 'Playfair Display', serif; font-size: 1.8rem;
+            color: var(--navy); font-weight: 800;
+        }
+        .float-card {
+            position: absolute; background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px; padding: 0.8rem 1.2rem;
+            color: rgba(255,255,255,0.7); font-size: 0.78rem;
+            font-weight: 500; white-space: nowrap;
+        }
+        .float-card.fc1 { top: 12%; left: -10%; animation: floatY 4s ease-in-out infinite; }
+        .float-card.fc2 { bottom: 18%; right: -8%; animation: floatY 4s ease-in-out infinite 1s; }
+        .float-card.fc3 { top: 55%; left: -15%; animation: floatY 4s ease-in-out infinite 2s; }
+        .float-card strong { color: var(--gold); }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        /* ══════════════════ LOGOS BANNER ══════════════════ */
+        .logos-section {
+            background: var(--white); padding: 3.5rem 5%;
+            border-bottom: 1px solid var(--gray-light);
+            overflow: hidden;
+        }
+        .logos-label {
+            text-align: center; font-size: 0.78rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.12em;
+            color: var(--gray); margin-bottom: 2rem;
+        }
+        .logos-track-wrapper {
+            position: relative; overflow: hidden; padding: 15px 0;
+            mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+        }
+        .logos-track {
+            display: flex; gap: 4rem; align-items: center;
+            animation: scrollLogos 35s linear infinite;
+            width: max-content;
+        }
+        .logo-item {
+            flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+            width: 95px; height: 32px; overflow: visible;
+            transition: all 0.3s; white-space: nowrap;
+        }
+        .logo-item img {
+            max-width: 100%; max-height: 100%;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.4; transition: all 0.4s;
+        }
+        .logo-item:hover img { opacity: 0.7; filter: grayscale(50%); }
+        /* fallback text style for Covéa */
+        .logo-item span.logo-text {
+            font-size: 1rem; font-weight: 700; color: var(--navy);
+            letter-spacing: 0.08em; opacity: 0.3; transition: opacity 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+        .logo-item:hover span.logo-text { opacity: 0.6; }
+        @keyframes scrollLogos {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ══════════════════ COMMON ══════════════════ */
+        section { padding: 7rem 5%; }
+        .section-label {
+            text-transform: uppercase; letter-spacing: 0.15em;
+            font-size: 0.75rem; font-weight: 600; color: var(--gold);
+            margin-bottom: 1rem; display: block;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            color: var(--navy); margin-bottom: 1.2rem; line-height: 1.2; font-weight: 700;
+        }
+        .section-subtitle {
+            color: var(--text-light); font-size: 1.02rem;
+            max-width: 600px; line-height: 1.8;
+        }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-header .section-subtitle { margin: 0 auto; }
+
+        /* ══════════════════ ABOUT ══════════════════ */
+        .about { background: var(--off-white); }
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 5rem; max-width: 1200px; margin: 0 auto; align-items: center;
+        }
+        .about-visual { position: relative; }
+        .about-card {
+            background: var(--white); border-radius: 16px; padding: 2.5rem;
+            box-shadow: 0 20px 60px rgba(11,29,58,0.07);
+        }
+        .about-card .ic {
+            width: 52px; height: 52px; border-radius: 12px;
+            background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1.2rem;
+        }
+        .about-card .ic svg { width: 22px; height: 22px; }
+        .about-card h3 { font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 0.6rem; }
+        .about-card p { color: var(--text-light); font-size: 0.92rem; }
+        .about-float {
+            position: absolute; bottom: -25px; right: -20px;
+            background: var(--gold); color: var(--navy);
+            padding: 1.2rem 1.8rem; border-radius: 12px;
+            font-weight: 700; font-size: 1rem;
+            box-shadow: 0 10px 30px rgba(200,164,94,0.3); z-index: 3;
+        }
+        .about-float small { display: block; font-weight: 400; font-size: 0.78rem; opacity: 0.8; }
+        .about-text .section-label, .about-text .section-title { text-align: left; }
+        .about-text p { color: var(--text-light); margin-bottom: 1rem; font-size: 0.95rem; }
+        .about-stats {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem; margin-top: 2rem;
+        }
+        .stat { text-align: center; }
+        .stat .num { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--navy); font-weight: 700; }
+        .stat .label { font-size: 0.78rem; color: var(--gray); margin-top: 0.2rem; }
+
+        /* ══════════════════ SERVICES ══════════════════ */
+        .services { background: var(--white); }
+        .services-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem; max-width: 1200px; margin: 0 auto;
+        }
+        .service-card {
+            background: var(--white); border: 1px solid var(--gray-light);
+            border-radius: 16px; padding: 2.2rem 1.8rem;
+            transition: all 0.4s ease; position: relative; overflow: hidden;
+        }
+        .service-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
+        }
+        .service-card:hover { border-color: transparent; box-shadow: 0 20px 60px rgba(11,29,58,0.08); transform: translateY(-4px); }
+        .service-card:hover::before { transform: scaleX(1); }
+        .svc-icon {
+            width: 48px; height: 48px; border-radius: 12px;
+            background: var(--off-white); display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1.3rem;
+        }
+        .svc-icon svg { width: 22px; height: 22px; color: var(--gold); }
+        .service-card .svc-num {
+            position: absolute; top: 1.5rem; right: 1.5rem;
+            font-size: 0.72rem; font-weight: 700; color: var(--gray-light);
+            letter-spacing: 0.05em;
+        }
+        .service-card h3 { font-size: 1.08rem; font-weight: 700; color: var(--navy); margin-bottom: 0.7rem; }
+        .service-card p { color: var(--text-light); font-size: 0.9rem; line-height: 1.7; }
+
+        /* ══════════════════ QUOTE ══════════════════ */
+        .quote-section {
+            background: var(--navy); padding: 5rem 5%; position: relative; overflow: hidden;
+        }
+        .quote-section::before {
+            content: '\201C'; position: absolute; top: -0.5rem; left: 8%;
+            font-family: 'Playfair Display', serif; font-size: 18rem;
+            color: rgba(200,164,94,0.06); line-height: 1;
+        }
+        .quote-inner {
+            max-width: 900px; margin: 0 auto; text-align: center;
+            position: relative; z-index: 2;
+        }
+        .quote-inner blockquote {
+            font-family: 'Playfair Display', serif; font-style: italic;
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem); color: var(--white);
+            line-height: 1.6; margin-bottom: 2rem;
+        }
+        .quote-author { display: flex; align-items: center; justify-content: center; gap: 1rem; }
+        .quote-avatar {
+            width: 48px; height: 48px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Playfair Display', serif; font-weight: 700;
+            color: var(--navy); font-size: 1rem;
+        }
+        .quote-meta .name { color: var(--white); font-weight: 600; font-size: 0.95rem; }
+        .quote-meta .role { color: var(--gold); font-size: 0.82rem; font-weight: 500; }
+
+        /* ══════════════════ HOW IT WORKS ══════════════════ */
+        .how { background: var(--off-white); }
+        .how-steps {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 2rem; max-width: 1200px; margin: 0 auto; position: relative;
+        }
+        .how-steps::before {
+            content: ''; position: absolute;
+            top: 32px; left: 12%; right: 12%;
+            height: 1px; background: var(--gray-light);
+        }
+        .step { text-align: center; position: relative; z-index: 2; }
+        .step-num {
+            width: 52px; height: 52px; border-radius: 50%;
+            background: var(--navy); color: var(--gold);
+            font-weight: 700; font-size: 1rem;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1.3rem; box-shadow: 0 6px 20px rgba(11,29,58,0.15);
+        }
+        .step h4 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--navy); }
+        .step p { color: var(--text-muted); font-size: 0.86rem; line-height: 1.7; }
+
+        /* ══════════════════ EXPERTISE ══════════════════ */
+        .expertise { background: var(--white); }
+        .expertise-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 4rem; max-width: 1200px; margin: 0 auto; align-items: center;
+        }
+        .expertise-list { list-style: none; }
+        .expertise-list li {
+            padding: 1rem 0; border-bottom: 1px solid var(--gray-light);
+            display: flex; align-items: flex-start; gap: 0.8rem;
+            font-size: 0.92rem; color: var(--text);
+        }
+        .expertise-list li:last-child { border-bottom: none; }
+        .ck {
+            width: 22px; height: 22px; min-width: 22px;
+            background: var(--gold); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin-top: 2px;
+        }
+        .ck svg { width: 11px; height: 11px; }
+        .expertise-badge {
+            background: var(--off-white); border-radius: 20px;
+            padding: 3rem; text-align: center;
+            border: 1px solid var(--gray-light);
+        }
+        .sap-text { font-size: 3.2rem; font-weight: 800; color: var(--navy); letter-spacing: 0.12em; margin-bottom: 0.8rem; }
+        .expertise-badge p { color: var(--text-light); font-size: 0.92rem; margin-bottom: 1.5rem; }
+        .module-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+        .mtag {
+            background: var(--white); border: 1px solid var(--gray-light);
+            padding: 0.45rem 1.1rem; border-radius: 50px;
+            font-size: 0.8rem; font-weight: 600; color: var(--navy);
+        }
+
+        /* ══════════════════ MODES ══════════════════ */
+        .modes { background: var(--off-white); }
+        .modes-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 2rem; max-width: 1000px; margin: 0 auto;
+        }
+        .mode-card { padding: 2.5rem; border-radius: 16px; position: relative; overflow: hidden; }
+        .mode-card.stealth { background: var(--navy); color: var(--white); }
+        .mode-card.standard { background: var(--white); border: 1px solid var(--gray-light); }
+        .mode-label-tag {
+            text-transform: uppercase; letter-spacing: 0.1em;
+            font-size: 0.72rem; font-weight: 600; color: var(--gold);
+            margin-bottom: 1rem; display: block;
+        }
+        .mode-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.8rem; }
+        .mode-card.stealth h3 { color: var(--white); }
+        .mode-card.standard h3 { color: var(--navy); }
+        .mode-card p { font-size: 0.9rem; line-height: 1.7; }
+        .mode-card.stealth p { color: rgba(255,255,255,0.6); }
+        .mode-card.standard p { color: var(--text-light); }
+
+        /* ══════════════════ EXPERTS ══════════════════ */
+        .experts { background: var(--white); }
+        .experts-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem; max-width: 1200px; margin: 0 auto;
+        }
+        .expert-card {
+            background: var(--cream); border-radius: 16px; padding: 2rem;
+            position: relative; overflow: hidden; transition: all 0.4s;
+            border: 1px solid transparent;
+        }
+        .expert-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(11,29,58,0.08); }
+        .expert-initials {
+            width: 52px; height: 52px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700;
+            color: var(--gold); margin-bottom: 1.2rem;
+        }
+        .expert-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 0.2rem; }
+        .expert-spec {
+            font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
+            text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; display: block;
+        }
+        .expert-card p { font-size: 0.85rem; line-height: 1.7; color: var(--text-light); }
+        .expert-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+        .expert-tags span {
+            font-size: 0.7rem; font-weight: 500; padding: 0.25rem 0.7rem;
+            border-radius: 100px; background: rgba(11,29,58,0.06); color: var(--text-muted);
+        }
+        .expert-exp {
+            font-size: 0.72rem; font-weight: 600; color: var(--navy);
+            margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid var(--gray-light);
+        }
+
+        /* ══════════════════ CTA ══════════════════ */
+        .cta-section {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+            text-align: center; padding: 6rem 5%; position: relative; overflow: hidden;
+        }
+        .cta-section::before {
+            content: ''; position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+            color: var(--white); margin-bottom: 1rem; position: relative;
+        }
+        .cta-section p { color: rgba(255,255,255,0.55); font-size: 1rem; max-width: 520px; margin: 0 auto 2.5rem; position: relative; }
+
+        /* ══════════════════ CONTACT ══════════════════ */
+        .contact { background: var(--white); }
+        .contact-grid {
+            display: grid; grid-template-columns: 1fr 1.1fr;
+            gap: 4rem; max-width: 1100px; margin: 0 auto;
+        }
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif; font-size: 1.5rem;
+            color: var(--navy); margin-bottom: 0.8rem;
+        }
+        .contact-info > p { color: var(--text-light); margin-bottom: 2rem; font-size: 0.95rem; }
+        .c-detail {
+            display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;
+        }
+        .c-detail .ico {
+            width: 42px; height: 42px; border-radius: 10px;
+            background: var(--off-white); display: flex;
+            align-items: center; justify-content: center;
+        }
+        .c-detail .ico svg { width: 18px; height: 18px; color: var(--gold); }
+        .c-detail span { font-size: 0.92rem; color: var(--text); }
+        .c-detail a { font-size: 0.92rem; color: var(--text); text-decoration: none; }
+        .c-detail a:hover { color: var(--gold); }
+        .contact-form {
+            background: var(--off-white); border-radius: 16px;
+            padding: 2.5rem; border: 1px solid var(--gray-light);
+        }
+        .fg { margin-bottom: 1rem; }
+        .fg label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--navy); margin-bottom: 0.35rem; }
+        .fg input, .fg textarea, .fg select {
+            width: 100%; padding: 0.8rem 1rem;
+            border: 1.5px solid var(--gray-light); border-radius: 8px;
+            font-family: 'Inter', sans-serif; font-size: 0.9rem;
+            color: var(--text); background: var(--white); transition: border-color 0.3s;
+        }
+        .fg input:focus, .fg textarea:focus, .fg select:focus { outline: none; border-color: var(--gold); }
+        .fg textarea { resize: vertical; min-height: 110px; }
+        .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+        .btn-submit {
+            width: 100%; padding: 0.9rem; margin-top: 0.5rem;
+            background: var(--gold); color: var(--navy); border: none;
+            border-radius: 8px; font-size: 0.92rem; font-weight: 600;
+            cursor: pointer; transition: all 0.3s; font-family: 'Inter', sans-serif;
+        }
+        .btn-submit:hover { background: var(--gold-light); }
+
+        /* ══════════════════ FOOTER ══════════════════ */
+        footer {
+            background: #060F1F; color: rgba(255,255,255,0.4);
+            padding: 2.5rem 5%;
+        }
+        .footer-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem; color: var(--white); font-weight: 700;
+        }
+        .footer-brand span { color: var(--gold); }
+        footer p { font-size: 0.82rem; }
+        .footer-links { display: flex; gap: 1.5rem; }
+        .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.82rem; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--gold); }
+
+        /* ══════════════════ ANIMATIONS ══════════════════ */
+        .fade-in {
+            opacity: 0; transform: translateY(25px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .fade-in-delay-1 { transition-delay: 0.1s; }
+        .fade-in-delay-2 { transition-delay: 0.2s; }
+        .fade-in-delay-3 { transition-delay: 0.3s; }
+
+        /* ══════════════════ RESPONSIVE ══════════════════ */
+        @media (max-width: 1024px) {
+            .hero-inner { grid-template-columns: 1fr; text-align: center; }
+            .hero-content .sub { margin-left: auto; margin-right: auto; }
+            .hero-buttons { justify-content: center; }
+            .hero-visual { display: none; }
+            .about-grid, .expertise-grid, .contact-grid { grid-template-columns: 1fr; }
+            .about-visual { order: 2; }
+            .services-grid { grid-template-columns: 1fr 1fr; }
+            .how-steps { grid-template-columns: 1fr 1fr; }
+            .how-steps::before { display: none; }
+            .modes-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            section { padding: 4.5rem 5%; }
+            .services-grid { grid-template-columns: 1fr; }
+            .how-steps { grid-template-columns: 1fr; }
+            .about-stats { grid-template-columns: repeat(3, 1fr); }
+            .nav-links { display: none; }
+            .mobile-toggle { display: block; }
+            .nav-links.open {
+                display: flex; flex-direction: column;
+                position: absolute; top: 100%; left: 0; right: 0;
+                background: rgba(11,29,58,0.98); padding: 1.5rem 5%;
+                gap: 1rem; backdrop-filter: blur(16px);
+            }
+            .fg-row { grid-template-columns: 1fr; }
+            .footer-inner { flex-direction: column; gap: 1rem; text-align: center; }
+            .footer-links { justify-content: center; }
+            .float-card { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+    <a href="#" class="logo"><span class="logo-bridge">Bridge</span><span class="logo-vale">vale</span></a>
+    <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#experts">Our Experts</a>
+        <a href="#how">Process</a>
+        <a href="#contact" class="nav-cta">Get in Touch</a>
+    </div>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow-2"></div>
+    <div class="hero-inner">
+        <div class="hero-content">
+            <div class="hero-tag"><span class="pulse"></span> Europe &amp; MENA Region</div>
+            <h1>Strategic Guidance.<br><em>Stronger Connections.</em><br>Better Results.</h1>
+            <p class="sub">Bridgevale Consulting connects consultants and organizations to a trusted network of senior specialists across SAP, Data, AI, Cloud, and IT Governance. We de-risk delivery, accelerate upskilling, and drive measurable outcomes.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Start a Conversation <span class="btn-arrow">&rarr;</span></a>
+                <a href="#services" class="btn-outline">Explore Services</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-graphic">
+                <div class="orbit"><div class="orbit-dot"></div></div>
+                <div class="orbit"><div class="orbit-dot"></div></div>
+                <div class="orbit"><div class="orbit-dot"></div></div>
+                <div class="hero-center"><span>BV</span></div>
+                <div class="float-card fc1"><strong>SAP</strong> &nbsp;FICO &middot; SD &middot; MM</div>
+                <div class="float-card fc2"><strong>Digital</strong> &nbsp;AI &middot; Data &middot; Cloud</div>
+                <div class="float-card fc3"><strong>GRC</strong> &nbsp;SOX &middot; Audit &middot; Compliance</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ LOGOS ═══ -->
+<div class="logos-section">
+    <div class="logos-label">Our consultants have worked with</div>
+    <div class="logos-track-wrapper">
+        <div class="logos-track" id="logosTrack">
+            <div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/l-oreal-3.svg" alt="L'Oréal" style="transform:scale(2.8)"></div>
+            <div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/sanofi-1.svg" alt="Sanofi" style="transform:scale(1.4)"></div>
+            <div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/publicis-sapient.svg" alt="Publicis Sapient" style="transform:scale(1.5)"></div>
+            <div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/danone-group.svg" alt="Danone" style="transform:scale(1.1)"></div>
+            <div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/kering-logo.svg" alt="Kering" style="transform:scale(1.3)"></div>
+            <div class="logo-item"><span class="logo-text">COVÉA</span></div>
+            <div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/dior.svg" alt="Dior" style="transform:scale(1.8)"></div>
+            <div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/suez.svg" alt="Suez" style="transform:scale(3.5)"></div>
+            <div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/geodis-3.svg" alt="Geodis" style="transform:scale(1.0)"></div>
+            <div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/rtl.svg" alt="RTL" style="transform:scale(1.8)"></div>
+            <div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/elia-1.svg" alt="Elia" style="transform:scale(1.0)"></div>
+            <div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/accenture-2.svg" alt="Accenture" style="transform:scale(1.3)"></div>
+            <!-- duplicate for seamless loop -->
+            <div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/l-oreal-3.svg" alt="L'Oréal" style="transform:scale(2.8)"></div>
+            <div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/sanofi-1.svg" alt="Sanofi" style="transform:scale(1.4)"></div>
+            <div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/publicis-sapient.svg" alt="Publicis Sapient" style="transform:scale(1.5)"></div>
+            <div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/danone-group.svg" alt="Danone" style="transform:scale(1.1)"></div>
+            <div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/kering-logo.svg" alt="Kering" style="transform:scale(1.3)"></div>
+            <div class="logo-item"><span class="logo-text">COVÉA</span></div>
+            <div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/dior.svg" alt="Dior" style="transform:scale(1.8)"></div>
+            <div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/suez.svg" alt="Suez" style="transform:scale(3.5)"></div>
+            <div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/geodis-3.svg" alt="Geodis" style="transform:scale(1.0)"></div>
+            <div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/rtl.svg" alt="RTL" style="transform:scale(1.8)"></div>
+            <div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/elia-1.svg" alt="Elia" style="transform:scale(1.0)"></div>
+            <div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/accenture-2.svg" alt="Accenture" style="transform:scale(1.3)"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ ABOUT ═══ -->
+<section class="about" id="about">
+    <div class="about-grid">
+        <div class="about-visual">
+            <div class="about-card fade-in">
+                <div class="ic">
+                    <svg fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h3>Consultant Support Network</h3>
+                <p>A trusted system where senior, highly specialized consultants help junior or generalist consultants on specific topics — while also being able to staff consultants directly to end clients when needed.</p>
+            </div>
+            <div class="about-float fade-in">SAP &amp; Digital<small>Core Focus</small></div>
+        </div>
+        <div class="about-text">
+            <span class="section-label">Who We Are</span>
+            <h2 class="section-title">Strengthening Delivery,<br>Without the Friction</h2>
+            <p>Bridgevale Consulting connects consultants and organizations to a trusted network of senior specialists in SAP, Digital, Data &amp; AI, IT Governance, and Cloud — based in Europe and the MENA region.</p>
+            <p>On the support side, Bridgevale acts as a discreet "expert back-office" that strengthens delivery without adding friction. Senior consultants can take over the most technical parts of a consultant's workload, so the primary consultant can deliver confidently and on time.</p>
+            <p>At the same time, Bridgevale accelerates upskilling through structured shadowing: joint working sessions, walkthroughs, review of deliverables, and quality checks — so consultants learn by doing and by observing.</p>
+            <div class="about-stats fade-in">
+                <div class="stat"><div class="num">SAP</div><div class="label">ERP &amp; Finance</div></div>
+                <div class="stat"><div class="num">Digital</div><div class="label">AI, Data &amp; Cloud</div></div>
+                <div class="stat"><div class="num">EU+MENA</div><div class="label">Coverage</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="services" id="services">
+    <div class="section-header">
+        <span class="section-label">What We Do</span>
+        <h2 class="section-title">A Complete Support Ecosystem</h2>
+        <p class="section-subtitle">From discreet expert back-office to direct staffing, Bridgevale adapts to your context and strengthens every layer of delivery.</p>
+    </div>
+    <div class="services-grid">
+        <div class="service-card fade-in">
+            <span class="svc-num">01</span>
+            <div class="svc-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9.663 17h4.674M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div>
+            <h3>Ad-Hoc Expert Support</h3>
+            <p>Need help on a specific topic? A senior specialist steps in quickly to unblock you, validate your approach, and help you deliver with confidence.</p>
+        </div>
+        <div class="service-card fade-in fade-in-delay-1">
+            <span class="svc-num">02</span>
+            <div class="svc-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <h3>Discreet Expert Back-Office</h3>
+            <p>We strengthen delivery behind the scenes: taking ownership of the most technical parts, reviewing deliverables, validating key decisions, and running quality checks — without adding friction.</p>
+        </div>
+        <div class="service-card fade-in fade-in-delay-2">
+            <span class="svc-num">03</span>
+            <div class="svc-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+            <h3>Upskilling Through Shadowing</h3>
+            <p>Support is also learning: joint working sessions, walkthroughs of the approach, deliverable reviews, decision validation, and guided feedback so consultants improve by doing and observing.</p>
+        </div>
+        <div class="service-card fade-in">
+            <span class="svc-num">04</span>
+            <div class="svc-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <h3>Senior Experts for Enterprises</h3>
+            <p>For large enterprises and consulting firms, we provide highly specialized experts to fill capability gaps, secure critical streams, reinforce project teams, and ensure delivery continuity.</p>
+        </div>
+        <div class="service-card fade-in fade-in-delay-1">
+            <span class="svc-num">05</span>
+            <div class="svc-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <h3>Part-Time &amp; Full-Time Staffing</h3>
+            <p>Beyond ad-hoc support, we staff expert consultants on a part-time or full-time basis — short or long assignments — depending on the context and delivery needs.</p>
+        </div>
+        <div class="service-card fade-in fade-in-delay-2">
+            <span class="svc-num">06</span>
+            <div class="svc-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+            <h3>Multi-Domain Expertise</h3>
+            <p>From SAP Finance &amp; Supply Chain to Data, AI, IT Governance, and Cloud — our network covers a broad range of technology and business domains to match your project needs.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ QUOTE ═══ -->
+<section class="quote-section">
+    <div class="quote-inner fade-in">
+        <blockquote>"The role of a consultant is simple: bring clarity, expertise, and solutions. Bridgevale exists to do exactly that, whether on demand or staffed."</blockquote>
+        <div class="quote-author">
+            <div class="quote-avatar">AK</div>
+            <div class="quote-meta">
+                <div class="name">Amine Koraibi</div>
+                <div class="role">Founder &amp; Lead Consultant</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="how" id="how">
+    <div class="section-header">
+        <span class="section-label">How It Works</span>
+        <h2 class="section-title">From First Call to Delivery</h2>
+        <p class="section-subtitle">A simple, friction-free process designed to get you the right support at the right time.</p>
+    </div>
+    <div class="how-steps">
+        <div class="step fade-in">
+            <div class="step-num">01</div>
+            <h4>Brief &amp; Scope</h4>
+            <p>Share your challenge, context, and timeline. We assess the skills needed and the best engagement model.</p>
+        </div>
+        <div class="step fade-in fade-in-delay-1">
+            <div class="step-num">02</div>
+            <h4>Match &amp; Mobilize</h4>
+            <p>We identify the right senior specialist from our curated network and align on working mode.</p>
+        </div>
+        <div class="step fade-in fade-in-delay-2">
+            <div class="step-num">03</div>
+            <h4>Deliver &amp; Support</h4>
+            <p>The expert engages — handling technical workload, reviewing deliverables, and ensuring quality.</p>
+        </div>
+        <div class="step fade-in fade-in-delay-3">
+            <div class="step-num">04</div>
+            <h4>Learn &amp; Grow</h4>
+            <p>Through joint sessions and structured shadowing, knowledge transfers naturally for long-term autonomy.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ EXPERTISE ═══ -->
+<section class="expertise" id="expertise">
+    <div class="expertise-grid">
+        <div>
+            <span class="section-label">Core Expertise</span>
+            <h2 class="section-title">Deep SAP Knowledge,<br>Broad Digital Reach</h2>
+            <ul class="expertise-list">
+                <li class="fade-in">
+                    <div class="ck"><svg fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div><strong>SAP Finance &amp; Controlling</strong> — FICO, COPA, COPC, Tax, DRC, Group Reporting, and General Ledger across S/4HANA environments.</div>
+                </li>
+                <li class="fade-in fade-in-delay-1">
+                    <div class="ck"><svg fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div><strong>SAP Supply Chain &amp; Integration</strong> — SD, MM, end-to-end integration, CPI/PI-PO, and cross-module data flows in multi-entity landscapes.</div>
+                </li>
+                <li class="fade-in fade-in-delay-2">
+                    <div class="ck"><svg fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div><strong>Data, AI &amp; Analytics</strong> — Data strategy, business intelligence, AI-driven transformation, and AMOA for data-intensive programs.</div>
+                </li>
+                <li class="fade-in fade-in-delay-3">
+                    <div class="ck"><svg fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div><strong>IT Governance &amp; Compliance</strong> — SOX, IT audit, internal controls, CISA frameworks, and regulatory compliance for global organizations.</div>
+                </li>
+                <li class="fade-in">
+                    <div class="ck"><svg fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div><strong>Cloud &amp; Digital Transformation</strong> — S/4HANA Cloud migrations, fit-to-standard, cloud-first strategies, and digital transformation programs.</div>
+                </li>
+            </ul>
+        </div>
+        <div class="fade-in">
+            <div class="expertise-badge">
+                <div class="sap-text">SAP</div>
+                <p>Deep expertise across SAP Finance, Supply Chain, and Integration — complemented by specialists in Data, AI, IT Governance, and Cloud.</p>
+                <div class="module-tags">
+                    <span class="mtag">FICO</span>
+                    <span class="mtag">SD</span>
+                    <span class="mtag">MM</span>
+                    <span class="mtag">S/4HANA</span>
+                    <span class="mtag">Integration</span>
+                    <span class="mtag">Data & AI</span>
+                    <span class="mtag">IT SOX</span>
+                    <span class="mtag">Cloud</span>
+                    <span class="mtag">AMOA</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ MODES ═══ -->
+<section class="modes">
+    <div class="section-header">
+        <span class="section-label">Engagement Modes</span>
+        <h2 class="section-title">Your Rules, Your Visibility</h2>
+        <p class="section-subtitle">Bridgevale adapts to your context. Choose the engagement model that fits your project reality.</p>
+    </div>
+    <div class="modes-grid">
+        <div class="mode-card stealth fade-in">
+            <span class="mode-label-tag">Behind the Scenes</span>
+            <h3>Stealth Mode</h3>
+            <p>The senior expert supports delivery without being visible to the end client. You maintain full ownership, full credit, and full control — Bridgevale works as your invisible expert back-office.</p>
+        </div>
+        <div class="mode-card standard fade-in fade-in-delay-1">
+            <span class="mode-label-tag">Standard Staffing</span>
+            <h3>Formal Introduction</h3>
+            <p>The Bridgevale consultant is formally introduced to the end client. A transparent model for reinforcing project teams, covering expertise gaps, or ensuring delivery continuity.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ EXPERTS ═══ -->
+<section class="experts" id="experts">
+    <div class="section-header">
+        <span class="section-label">Our Network</span>
+        <h2 class="section-title">Handpicked Senior Specialists</h2>
+        <p class="section-subtitle">Every consultant in our network brings deep domain expertise, proven delivery track records, and the ability to operate autonomously in complex environments.</p>
+    </div>
+    <div class="experts-grid">
+
+        <div class="expert-card fade-in">
+            <div class="expert-initials">NK</div>
+            <h3>Nezha K.</h3>
+            <span class="expert-spec">Management & Delivery</span>
+            <p>Seasoned technology consulting manager with 9+ years leading complex SAP delivery programs across Finance and Supply Chain. Known for bridging the gap between technical teams and C-level stakeholders, she ensures on-time, on-budget delivery in high-stakes transformation environments.</p>
+            <div class="expert-tags">
+                <span>Project Management</span>
+                <span>Team Leadership</span>
+                <span>S/4HANA</span>
+                <span>Delivery Governance</span>
+            </div>
+            <div class="expert-exp">9+ years &bull; CAC40 clients in FMCG &amp; Cosmetics &bull; Dubai</div>
+        </div>
+
+        <div class="expert-card fade-in fade-in-delay-1">
+            <div class="expert-initials">MT</div>
+            <h3>Mhamed T.</h3>
+            <span class="expert-spec">SAP COPA & COPC</span>
+            <p>Finance & Controlling specialist with deep expertise in Profitability Analysis (CO-PA) and Product Costing (CO-PC). A trusted advisor on margin analysis and cost allocation strategies, he has led S/4HANA transformations for some of the world's most iconic brands.</p>
+            <div class="expert-tags">
+                <span>CO-PA</span>
+                <span>CO-PC</span>
+                <span>S/4HANA Finance</span>
+                <span>Margin Analysis</span>
+            </div>
+            <div class="expert-exp">7+ years &bull; CAC40 clients in Luxury &amp; Cosmetics &bull; Paris</div>
+        </div>
+
+        <div class="expert-card fade-in fade-in-delay-2">
+            <div class="expert-initials">OE</div>
+            <h3>Oumayma E.</h3>
+            <span class="expert-spec">SAP FI — General Ledger</span>
+            <p>FI-GL expert with 6+ years of hands-on SAP FICO experience across large-scale S/4HANA programs. Specializes in General Ledger configuration, financial close processes, and chart of accounts harmonization for multi-entity corporate structures.</p>
+            <div class="expert-tags">
+                <span>FI-GL</span>
+                <span>S/4HANA</span>
+                <span>Financial Close</span>
+                <span>Chart of Accounts</span>
+            </div>
+            <div class="expert-exp">6+ years &bull; CAC40 clients in Energy, Utilities &amp; Cosmetics &bull; Dubai</div>
+        </div>
+
+        <div class="expert-card fade-in">
+            <div class="expert-initials">MA</div>
+            <h3>Mohammed A.</h3>
+            <span class="expert-spec">SAP Integration</span>
+            <p>Solution architect and integration lead designing end-to-end SAP landscapes. Orchestrates seamless data flows between SAP modules and third-party systems, specializing in CPI, PI/PO, and middleware strategies for multi-entity environments across Europe.</p>
+            <div class="expert-tags">
+                <span>SAP Integration</span>
+                <span>CPI / PI-PO</span>
+                <span>Solution Architecture</span>
+                <span>Multi-Entity</span>
+            </div>
+            <div class="expert-exp">10+ years &bull; Clients in Energy, Media &amp; Cosmetics &bull; Brussels</div>
+        </div>
+
+        <div class="expert-card fade-in fade-in-delay-1">
+            <div class="expert-initials">AK</div>
+            <h3>Amine K.</h3>
+            <span class="expert-spec">Tax & Document Compliance (DRC)</span>
+            <p>FICO consultant specialized in Tax configuration and SAP Document & Reporting Compliance (DRC). Helps multinational groups navigate complex tax landscapes, e-invoicing mandates, and regulatory reporting requirements within S/4HANA environments across Europe and the Middle East.</p>
+            <div class="expert-tags">
+                <span>Tax Configuration</span>
+                <span>DRC</span>
+                <span>SAP FICO</span>
+                <span>MENA & Europe</span>
+            </div>
+            <div class="expert-exp">7+ years &bull; CAC40 clients in Pharma, Utilities &amp; Cosmetics &bull; Dubai</div>
+        </div>
+
+        <div class="expert-card fade-in fade-in-delay-2">
+            <div class="expert-initials">AZ</div>
+            <h3>Anissa Z.</h3>
+            <span class="expert-spec">SAP S/4HANA Cloud</span>
+            <p>Senior FICO consultant with deep expertise in SAP S/4HANA Cloud deployments. Guides organizations through cloud-first finance transformations, from fit-to-standard workshops to go-live and hypercare. Adept at navigating the constraints and best practices unique to SAP's cloud offering.</p>
+            <div class="expert-tags">
+                <span>S/4HANA Cloud</span>
+                <span>Fit-to-Standard</span>
+                <span>SAP FICO</span>
+                <span>Cloud Migration</span>
+            </div>
+            <div class="expert-exp">8+ years &bull; Clients in Pharma, Banking &amp; Insurance &bull; France</div>
+        </div>
+
+        <div class="expert-card fade-in">
+            <div class="expert-initials">HW</div>
+            <h3>Hachim W.</h3>
+            <span class="expert-spec">Group Reporting & FICO</span>
+            <p>Finance transformation manager leading S/4HANA-driven Group Reporting and consolidation projects at a Big Four firm. Helps CFO offices redesign their reporting architectures and achieve a unified source of truth across complex group structures.</p>
+            <div class="expert-tags">
+                <span>Group Reporting</span>
+                <span>SAP FICO</span>
+                <span>Consolidation</span>
+                <span>Finance Transformation</span>
+            </div>
+            <div class="expert-exp">8+ years &bull; CAC40 clients in Pharma, Insurance &amp; Energy &bull; Dubai</div>
+        </div>
+
+        <div class="expert-card fade-in fade-in-delay-1">
+            <div class="expert-initials">AC</div>
+            <h3>Abdelkader C.</h3>
+            <span class="expert-spec">AMOA, Data & AI</span>
+            <p>Senior Business Analyst and AMOA project lead driving data-driven transformation programs within major financial institutions. Bridges the gap between business stakeholders and technical teams on AI, analytics, and data governance initiatives — turning complex requirements into actionable roadmaps.</p>
+            <div class="expert-tags">
+                <span>AMOA</span>
+                <span>Business Analysis</span>
+                <span>Data Strategy</span>
+                <span>AI & Analytics</span>
+            </div>
+            <div class="expert-exp">8+ years &bull; CAC40 clients in Banking &amp; Financial Services &bull; Paris</div>
+        </div>
+
+        <div class="expert-card fade-in fade-in-delay-2">
+            <div class="expert-initials">ME</div>
+            <h3>Mehdi E.</h3>
+            <span class="expert-spec">IT Governance & SOX Compliance</span>
+            <p>CISA-certified IT governance leader with extensive experience in SOX compliance, IT audit, and internal controls across global organizations. Designs and operates IT control frameworks at scale, ensuring regulatory compliance while enabling operational agility in complex, multi-country environments.</p>
+            <div class="expert-tags">
+                <span>IT SOX</span>
+                <span>CISA</span>
+                <span>IT Audit</span>
+                <span>Internal Controls</span>
+            </div>
+            <div class="expert-exp">10+ years &bull; Global clients in Logistics &amp; Supply Chain &bull; Dubai</div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-section">
+    <h2>Ready to Strengthen Your Delivery?</h2>
+    <p>Whether you need discreet expert support, structured upskilling, or senior profiles for your teams — let's talk.</p>
+    <a href="#contact" class="btn-primary" style="position:relative;">Get in Touch <span class="btn-arrow">&rarr;</span></a>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section class="contact" id="contact">
+    <div class="contact-grid">
+        <div class="contact-info fade-in">
+            <span class="section-label">Contact</span>
+            <h3>Let's Build Something Together</h3>
+            <p>Tell us about your context, challenge, or staffing needs. We'll get back to you within 24 hours with a tailored approach.</p>
+            <div class="c-detail">
+                <div class="ico"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                <a href="mailto:operations@bridgevaleconsulting.com">operations@bridgevaleconsulting.com</a>
+            </div>
+            <div class="c-detail">
+                <div class="ico"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+                <a href="tel:+33695624664">+33 6 95 62 46 64</a>
+            </div>
+            <div class="c-detail">
+                <div class="ico"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                <span>71-75 Shelton Street, Covent Garden<br>London, WC2H 9JQ</span>
+            </div>
+        </div>
+        <div class="contact-form fade-in">
+            <form id="contactForm">
+                <div class="fg-row">
+                    <div class="fg"><label>First Name</label><input type="text" placeholder="John" required></div>
+                    <div class="fg"><label>Last Name</label><input type="text" placeholder="Doe" required></div>
+                </div>
+                <div class="fg"><label>Email</label><input type="email" placeholder="john@company.com" required></div>
+                <div class="fg"><label>Company</label><input type="text" placeholder="Your company name"></div>
+                <div class="fg">
+                    <label>I'm Looking For</label>
+                    <select>
+                        <option value="">Select a service</option>
+                        <option>Ad-Hoc Expert Support</option>
+                        <option>Discreet Expert Back-Office</option>
+                        <option>Upskilling &amp; Shadowing</option>
+                        <option>Senior Experts for Enterprises</option>
+                        <option>Part-Time / Full-Time Staffing</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="fg"><label>Message</label><textarea placeholder="Tell us about your project, context, and timeline..."></textarea></div>
+                <button type="submit" class="btn-submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-brand">Bridge<span>vale</span></div>
+        <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#expertise">Expertise</a>
+            <a href="#experts">Our Experts</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p>&copy; 2026 Bridgevale Consulting Ltd. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+// Navbar
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+// Mobile menu
+const toggle = document.getElementById('mobileToggle');
+const links = document.getElementById('navLinks');
+toggle.addEventListener('click', () => links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+// Logo fallback + size normalization
+document.querySelectorAll('.logo-item img').forEach(img => {
+    img.addEventListener('error', function() {
+        const span = document.createElement('span');
+        span.className = 'logo-text';
+        span.textContent = this.alt.toUpperCase();
+        this.parentElement.replaceChild(span, this);
+    });
+});
+
+// Fade-in observer
+const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+// Form
+document.getElementById('contactForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    const orig = btn.textContent;
+    btn.textContent = 'Message Sent!';
+    btn.style.background = '#2ecc71'; btn.style.color = '#fff';
+    setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.style.color = ''; e.target.reset(); }, 3000);
+});
+</script>
+</body>
+</html>
