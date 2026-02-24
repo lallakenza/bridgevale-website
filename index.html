@@ -494,6 +494,8 @@
         .avail-dot.full::after { border: 2px solid rgba(34,197,94,0.4); }
         .avail-dot.partial { background: #F59E0B; }
         .avail-dot.partial::after { border: 2px solid rgba(245,158,11,0.4); }
+        .avail-dot.staffed { background: #EF4444; }
+        .avail-dot.staffed::after { border: 2px solid rgba(239,68,68,0.4); }
         @keyframes availPulse {
             0%, 100% { transform: scale(1); opacity: 1; }
             50% { transform: scale(1.6); opacity: 0; }
@@ -513,6 +515,10 @@
         }
         .avail-banner.partial {
             background: linear-gradient(135deg, #F59E0B, #D97706);
+            color: white;
+        }
+        .avail-banner.staffed {
+            background: linear-gradient(135deg, #EF4444, #DC2626);
             color: white;
         }
         .expert-card:hover .avail-banner {
@@ -1023,8 +1029,8 @@
         </div>
 
         <div class="expert-card fade-in">
-            <div class="avail-banner partial">Partial Availability</div>
-            <div class="avail-dot partial"></div>
+            <div class="avail-banner staffed">Fully Staffed</div>
+            <div class="avail-dot staffed"></div>
             <div class="expert-initials">HW</div>
             <h3>Hachim W.</h3>
             <span class="expert-spec">Group Reporting & FICO</span>
