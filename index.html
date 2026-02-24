@@ -289,13 +289,13 @@
         .about-card .ic svg { width: 22px; height: 22px; }
         .about-card h3 { font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 0.6rem; }
         .about-card p { color: var(--text-light); font-size: 0.92rem; }
+        .about-visual { padding-bottom: 0; }
         .about-float {
-            display: block; margin-top: 1.2rem; margin-left: auto;
-            width: fit-content;
             background: var(--gold); color: var(--navy);
-            padding: 1rem 1.6rem; border-radius: 12px;
-            font-weight: 700; font-size: 1rem;
+            padding: 0.9rem 1.5rem; border-radius: 12px;
+            font-weight: 700; font-size: 0.95rem;
             box-shadow: 0 10px 30px rgba(200,164,94,0.3);
+            display: inline-block; margin-top: 1rem; float: right;
         }
         .about-float small { display: block; font-weight: 400; font-size: 0.78rem; opacity: 0.8; }
         .about-text .section-label, .about-text .section-title { text-align: left; }
@@ -479,6 +479,44 @@
         .expert-exp {
             font-size: 0.72rem; font-weight: 600; color: var(--navy);
             margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid var(--gray-light);
+        }
+        /* Availability indicator */
+        .avail-dot {
+            position: absolute; top: 1.4rem; right: 1.4rem;
+            width: 10px; height: 10px; border-radius: 50%;
+            z-index: 3;
+        }
+        .avail-dot::after {
+            content: ''; position: absolute; inset: -3px;
+            border-radius: 50%; animation: availPulse 2s ease-in-out infinite;
+        }
+        .avail-dot.full { background: #22C55E; }
+        .avail-dot.full::after { border: 2px solid rgba(34,197,94,0.4); }
+        .avail-dot.partial { background: #F59E0B; }
+        .avail-dot.partial::after { border: 2px solid rgba(245,158,11,0.4); }
+        @keyframes availPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.6); opacity: 0; }
+        }
+        .avail-banner {
+            position: absolute; top: 0; left: 0; right: 0;
+            padding: 0.5rem 1rem;
+            font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+            text-transform: uppercase; text-align: center;
+            transform: translateY(-100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2;
+        }
+        .avail-banner.full {
+            background: linear-gradient(135deg, #22C55E, #16A34A);
+            color: white;
+        }
+        .avail-banner.partial {
+            background: linear-gradient(135deg, #F59E0B, #D97706);
+            color: white;
+        }
+        .expert-card:hover .avail-banner {
+            transform: translateY(0);
         }
 
         /* ══════════════════ CTA ══════════════════ */
@@ -889,6 +927,8 @@
     <div class="experts-grid">
 
         <div class="expert-card fade-in">
+            <div class="avail-banner full">Fully Available</div>
+            <div class="avail-dot full"></div>
             <div class="expert-initials">NK</div>
             <h3>Nezha K.</h3>
             <span class="expert-spec">Management & Delivery</span>
@@ -903,6 +943,8 @@
         </div>
 
         <div class="expert-card fade-in fade-in-delay-1">
+            <div class="avail-banner partial">Partial Availability</div>
+            <div class="avail-dot partial"></div>
             <div class="expert-initials">MT</div>
             <h3>Mhamed T.</h3>
             <span class="expert-spec">SAP COPA & COPC</span>
@@ -917,6 +959,8 @@
         </div>
 
         <div class="expert-card fade-in fade-in-delay-2">
+            <div class="avail-banner full">Fully Available</div>
+            <div class="avail-dot full"></div>
             <div class="expert-initials">OE</div>
             <h3>Oumayma E.</h3>
             <span class="expert-spec">SAP FI — General Ledger</span>
@@ -931,6 +975,8 @@
         </div>
 
         <div class="expert-card fade-in">
+            <div class="avail-banner full">Fully Available</div>
+            <div class="avail-dot full"></div>
             <div class="expert-initials">MA</div>
             <h3>Mohammed A.</h3>
             <span class="expert-spec">SAP Integration</span>
@@ -945,6 +991,8 @@
         </div>
 
         <div class="expert-card fade-in fade-in-delay-1">
+            <div class="avail-banner full">Fully Available</div>
+            <div class="avail-dot full"></div>
             <div class="expert-initials">AK</div>
             <h3>Amine K.</h3>
             <span class="expert-spec">Tax & Document Compliance (DRC)</span>
@@ -959,6 +1007,8 @@
         </div>
 
         <div class="expert-card fade-in fade-in-delay-2">
+            <div class="avail-banner partial">Partial Availability</div>
+            <div class="avail-dot partial"></div>
             <div class="expert-initials">AZ</div>
             <h3>Anissa Z.</h3>
             <span class="expert-spec">SAP S/4HANA Cloud</span>
@@ -973,6 +1023,8 @@
         </div>
 
         <div class="expert-card fade-in">
+            <div class="avail-banner partial">Partial Availability</div>
+            <div class="avail-dot partial"></div>
             <div class="expert-initials">HW</div>
             <h3>Hachim W.</h3>
             <span class="expert-spec">Group Reporting & FICO</span>
@@ -987,6 +1039,8 @@
         </div>
 
         <div class="expert-card fade-in fade-in-delay-1">
+            <div class="avail-banner full">Fully Available</div>
+            <div class="avail-dot full"></div>
             <div class="expert-initials">AC</div>
             <h3>Abdelkader C.</h3>
             <span class="expert-spec">AMOA, Data & AI</span>
@@ -1001,6 +1055,8 @@
         </div>
 
         <div class="expert-card fade-in fade-in-delay-2">
+            <div class="avail-banner full">Fully Available</div>
+            <div class="avail-dot full"></div>
             <div class="expert-initials">ME</div>
             <h3>Mehdi E.</h3>
             <span class="expert-spec">IT Governance & SOX Compliance</span>
