@@ -5,7 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bridgevale Consulting — Expert Consultant Support Network</title>
     <meta name="description" content="Bridgevale Consulting connects consultants and organizations to a trusted network of senior specialists. Ad-hoc expert support, staffing, and SAP expertise across Europe and MENA.">
+    <meta name="author" content="Bridgevale Consulting Ltd">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0B1D3A">
+    <link rel="canonical" href="https://lallakenza.github.io/bridgevale-website/">
+
+    <!-- Favicon (inline SVG: navy square with gold B) -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230B1D3A'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='62' font-weight='800' fill='%23C8A45E' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+
+    <!-- Open Graph / LinkedIn / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Bridgevale Consulting">
+    <meta property="og:url" content="https://lallakenza.github.io/bridgevale-website/">
+    <meta property="og:title" content="Bridgevale Consulting — Expert Consultant Support Network">
+    <meta property="og:description" content="Senior specialists in SAP, Data, AI, Cloud & IT Governance reinforcing project teams across Europe and MENA.">
+    <meta property="og:image" content="https://lallakenza.github.io/bridgevale-website/og-image.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_GB">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bridgevale Consulting — Expert Consultant Support Network">
+    <meta name="twitter:description" content="Senior specialists in SAP, Data, AI, Cloud & IT Governance reinforcing project teams across Europe and MENA.">
+    <meta name="twitter:image" content="https://lallakenza.github.io/bridgevale-website/og-image.svg">
+
+    <!-- Structured data: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Bridgevale Consulting Ltd",
+      "url": "https://lallakenza.github.io/bridgevale-website/",
+      "email": "operations@bridgevaleconsulting.com",
+      "description": "Consultant support network providing senior specialists in SAP, Data, AI, Cloud and IT Governance across Europe and MENA.",
+      "foundingDate": "2025-12-16",
+      "legalName": "Bridgevale Consulting Ltd",
+      "identifier": "16914928",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "71-75 Shelton Street, Covent Garden",
+        "addressLocality": "London",
+        "postalCode": "WC2H 9JQ",
+        "addressCountry": "GB"
+      },
+      "areaServed": ["Europe", "MENA"]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,6 +83,27 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--text); line-height: 1.7;
             overflow-x: hidden; background: var(--white);
+        }
+
+        /* Skip link for keyboard / screen reader users */
+        .skip-link {
+            position: absolute; top: -48px; left: 16px;
+            background: var(--gold); color: var(--navy);
+            padding: 8px 16px; border-radius: 6px;
+            font-weight: 600; font-size: 0.9rem;
+            text-decoration: none; z-index: 10000;
+            transition: top 0.2s;
+        }
+        .skip-link:focus { top: 12px; outline: 2px solid var(--navy); }
+
+        /* Respect reduced-motion user preference */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
         }
 
         /* ══════════════════ NAV ══════════════════ */
@@ -688,8 +758,10 @@
 <body>
 
 <!-- ═══ NAV ═══ -->
-<nav id="nav">
-    <a href="#" class="logo"><span class="logo-bridge">Bridge</span><span class="logo-vale">vale</span></a>
+<a href="#hero" class="skip-link">Skip to main content</a>
+
+<nav id="nav" aria-label="Primary">
+    <a href="#" class="logo" aria-label="Bridgevale — home"><span class="logo-bridge">Bridge</span><span class="logo-vale">vale</span></a>
     <div class="nav-links" id="navLinks">
         <a href="#about">Who We Are</a>
         <a href="#services">Services</a>
@@ -698,7 +770,7 @@
         <a href="#experts">Our Experts</a>
         <a href="#contact" class="nav-cta">Get in Touch</a>
     </div>
-    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
     </button>
 </nav>
@@ -772,7 +844,7 @@
         <div class="about-visual">
             <div class="about-card fade-in">
                 <div class="ic">
-                    <svg fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    <svg aria-hidden="true" focusable="false" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 </div>
                 <h3>Consultant Support Network</h3>
                 <p>A trusted system where senior, highly specialized consultants help junior or generalist consultants on specific topics — while also being able to staff consultants directly to end clients when needed.</p>
@@ -804,37 +876,37 @@
     <div class="services-grid">
         <div class="service-card fade-in">
             <span class="svc-num">01</span>
-            <div class="svc-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <div class="svc-icon"><svg aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
             <h3>Senior Experts for Enterprises</h3>
             <p>For large enterprises and consulting firms, we provide highly specialized experts to fill capability gaps, secure critical streams, reinforce project teams, and ensure delivery continuity.</p>
         </div>
         <div class="service-card fade-in fade-in-delay-1">
             <span class="svc-num">02</span>
-            <div class="svc-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div class="svc-icon"><svg aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
             <h3>Part-Time &amp; Full-Time Staffing</h3>
             <p>We staff expert consultants on a part-time or full-time basis — short or long assignments — depending on the context and delivery needs of your organization.</p>
         </div>
         <div class="service-card fade-in fade-in-delay-2">
             <span class="svc-num">03</span>
-            <div class="svc-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+            <div class="svc-icon"><svg aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
             <h3>Multi-Domain Expertise</h3>
             <p>From SAP Finance &amp; Supply Chain to Data, AI, IT Governance, and Cloud — our network covers a broad range of technology and business domains to match your project needs.</p>
         </div>
         <div class="service-card fade-in">
             <span class="svc-num">04</span>
-            <div class="svc-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9.663 17h4.674M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div>
+            <div class="svc-icon"><svg aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9.663 17h4.674M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div>
             <h3>Ad-Hoc Expert Support</h3>
             <p>Need help on a specific topic? A senior specialist steps in quickly to unblock you, validate your approach, and help you deliver with confidence.</p>
         </div>
         <div class="service-card fade-in fade-in-delay-1">
             <span class="svc-num">05</span>
-            <div class="svc-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div class="svc-icon"><svg aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
             <h3>Discreet Expert Back-Office</h3>
             <p>We strengthen delivery behind the scenes: taking ownership of the most technical parts, reviewing deliverables, validating key decisions, and running quality checks — without adding friction.</p>
         </div>
         <div class="service-card fade-in fade-in-delay-2">
             <span class="svc-num">06</span>
-            <div class="svc-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+            <div class="svc-icon"><svg aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
             <h3>Upskilling Through Shadowing</h3>
             <p>Support is also learning: joint working sessions, walkthroughs of the approach, deliverable reviews, decision validation, and guided feedback so consultants improve by doing and observing.</p>
         </div>
@@ -894,23 +966,23 @@
             <h2 class="section-title">Deep SAP Knowledge,<br>Broad Digital Reach</h2>
             <ul class="expertise-list">
                 <li class="fade-in">
-                    <div class="ck"><svg fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="ck"><svg aria-hidden="true" focusable="false" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div><strong>SAP Finance &amp; Controlling</strong> — FICO, COPA, COPC, Tax, DRC, Group Reporting, and General Ledger across S/4HANA environments.</div>
                 </li>
                 <li class="fade-in fade-in-delay-1">
-                    <div class="ck"><svg fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="ck"><svg aria-hidden="true" focusable="false" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div><strong>SAP Supply Chain &amp; Integration</strong> — SD, MM, end-to-end integration, CPI/PI-PO, and cross-module data flows in multi-entity landscapes.</div>
                 </li>
                 <li class="fade-in fade-in-delay-2">
-                    <div class="ck"><svg fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="ck"><svg aria-hidden="true" focusable="false" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div><strong>Data, AI &amp; Analytics</strong> — Data strategy, business intelligence, AI-driven transformation, and AMOA for data-intensive programs.</div>
                 </li>
                 <li class="fade-in fade-in-delay-3">
-                    <div class="ck"><svg fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="ck"><svg aria-hidden="true" focusable="false" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div><strong>IT Governance &amp; Compliance</strong> — SOX, IT audit, internal controls, CISA frameworks, and regulatory compliance for global organizations.</div>
                 </li>
                 <li class="fade-in">
-                    <div class="ck"><svg fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="ck"><svg aria-hidden="true" focusable="false" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div><strong>Cloud &amp; Digital Transformation</strong> — S/4HANA Cloud migrations, fit-to-standard, cloud-first strategies, and digital transformation programs.</div>
                 </li>
             </ul>
@@ -1128,17 +1200,17 @@
             <h3>Let's Build Something Together</h3>
             <p>Tell us about your context, challenge, or staffing needs. We'll get back to you within 24 hours with a tailored approach.</p>
             <div class="c-detail">
-                <div class="ico"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                <div class="ico"><svg aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
                 <a href="mailto:operations@bridgevaleconsulting.com">operations@bridgevaleconsulting.com</a>
             </div>
             <div class="c-detail">
-                <div class="ico"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                <div class="ico"><svg aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
                 <span>71-75 Shelton Street, Covent Garden<br>London, WC2H 9JQ</span>
             </div>
         </div>
         <div class="contact-form fade-in" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:320px;">
             <div style="margin-bottom:1.5rem;">
-                <svg fill="none" stroke="var(--gold)" stroke-width="1.5" viewBox="0 0 24 24" style="width:56px;height:56px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <svg aria-hidden="true" focusable="false" fill="none" stroke="var(--gold)" stroke-width="1.5" viewBox="0 0 24 24" style="width:56px;height:56px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
             <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--navy);margin-bottom:0.6rem;">Send Us an Email</h3>
             <p style="color:var(--text-light);font-size:0.92rem;margin-bottom:2rem;max-width:380px;">Click the button below to open your email client with a pre-filled message. Just add your details and hit send.</p>
@@ -1205,8 +1277,14 @@ window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.
 // Mobile menu
 const toggle = document.getElementById('mobileToggle');
 const links = document.getElementById('navLinks');
-toggle.addEventListener('click', () => links.classList.toggle('open'));
-links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+}));
 
 // Logo fallback + size normalization
 document.querySelectorAll('.logo-item img').forEach(img => {

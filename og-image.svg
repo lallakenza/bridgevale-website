@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#060F1F"/>
+      <stop offset="0.35" stop-color="#0B1D3A"/>
+      <stop offset="0.7" stop-color="#132D5E"/>
+      <stop offset="1" stop-color="#1A3A6E"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.85" cy="0.15" r="0.7">
+      <stop offset="0" stop-color="#C8A45E" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#C8A45E" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#C8A45E"/>
+      <stop offset="1" stop-color="#E0C882"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <g font-family="Georgia, 'Times New Roman', serif">
+    <text x="80" y="150" font-size="42" font-weight="800" fill="#FFFFFF" letter-spacing="1">Bridge<tspan fill="#C8A45E">vale</tspan></text>
+    <text x="80" y="200" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#C8A45E" letter-spacing="4">CONSULTING · EUROPE &amp; MENA</text>
+  </g>
+  <text x="80" y="340" font-family="Georgia, serif" font-size="78" font-weight="700" fill="#FFFFFF">Expert Consultants.</text>
+  <text x="80" y="430" font-family="Georgia, serif" font-size="78" font-weight="700" font-style="italic" fill="url(#gold)">Stronger Teams.</text>
+  <text x="80" y="520" font-family="Georgia, serif" font-size="78" font-weight="700" fill="#FFFFFF">Better Delivery.</text>
+  <text x="80" y="585" font-family="system-ui, sans-serif" font-size="22" fill="#8A8F9C">SAP · Data · AI · Cloud · IT Governance</text>
+  <g transform="translate(960,315)">
+    <circle r="180" fill="none" stroke="#C8A45E" stroke-opacity="0.18" stroke-width="1"/>
+    <circle r="130" fill="none" stroke="#C8A45E" stroke-opacity="0.22" stroke-width="1"/>
+    <circle r="80" fill="none" stroke="#C8A45E" stroke-opacity="0.28" stroke-width="1"/>
+    <circle r="60" fill="url(#gold)"/>
+    <text x="0" y="18" text-anchor="middle" font-family="Georgia, serif" font-size="44" font-weight="800" fill="#0B1D3A">BV</text>
+  </g>
+</svg>

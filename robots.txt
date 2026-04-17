@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lallakenza.github.io/bridgevale-website/sitemap.xml
