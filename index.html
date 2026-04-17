@@ -85,6 +85,16 @@
             overflow-x: hidden; background: var(--white);
         }
 
+        /* Scroll progress bar — thin gold line at top */
+        .scroll-progress {
+            position: fixed; top: 0; left: 0;
+            height: 3px; width: 0;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            z-index: 1001;
+            transition: width 0.1s linear;
+            box-shadow: 0 0 8px rgba(200,164,94,0.5);
+        }
+
         /* Skip link for keyboard / screen reader users */
         .skip-link {
             position: absolute; top: -48px; left: 16px;
@@ -211,6 +221,27 @@
             max-width: 520px; margin-bottom: 2.5rem; line-height: 1.8;
         }
         .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+        /* Hero trust-indicator stats row */
+        .hero-stats {
+            display: flex; gap: 2.2rem; flex-wrap: wrap;
+            margin-top: 2.8rem; padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            animation: fadeUp 1s ease 0.4s both;
+        }
+        .hero-stat { display: flex; flex-direction: column; gap: 0.25rem; }
+        .hero-stat .hs-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem; font-weight: 700;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; line-height: 1;
+        }
+        .hero-stat .hs-label {
+            font-size: 0.72rem; font-weight: 600;
+            color: rgba(255,255,255,0.55);
+            letter-spacing: 0.08em; text-transform: uppercase;
+        }
         .btn-primary {
             background: var(--gold); color: var(--navy);
             padding: 0.9rem 2.4rem; border-radius: 8px; border: none;
@@ -325,7 +356,11 @@
         .section-label {
             text-transform: uppercase; letter-spacing: 0.15em;
             font-size: 0.75rem; font-weight: 600; color: var(--gold);
-            margin-bottom: 1rem; display: block;
+            margin-bottom: 1rem; display: inline-flex; align-items: center; gap: 0.7rem;
+        }
+        .section-label::before {
+            content: ''; width: 28px; height: 1.5px;
+            background: linear-gradient(90deg, var(--gold), rgba(200,164,94,0.2));
         }
         .section-title {
             font-family: 'Playfair Display', serif;
@@ -386,7 +421,7 @@
         }
         .service-card {
             background: var(--white); border: 1px solid var(--gray-light);
-            border-radius: 16px; padding: 2.2rem 1.8rem;
+            border-radius: 16px; padding: 2.4rem 1.9rem 2rem;
             transition: all 0.4s ease; position: relative; overflow: hidden;
         }
         .service-card::before {
@@ -394,21 +429,45 @@
             height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light));
             transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
         }
-        .service-card:hover { border-color: transparent; box-shadow: 0 20px 60px rgba(11,29,58,0.08); transform: translateY(-4px); }
+        .service-card::after {
+            content: ''; position: absolute; inset: 0; border-radius: 16px;
+            padding: 1px; background: linear-gradient(135deg, rgba(200,164,94,0.45), rgba(200,164,94,0));
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor; mask-composite: exclude;
+            opacity: 0; transition: opacity 0.4s ease; pointer-events: none;
+        }
+        .service-card:hover {
+            border-color: transparent;
+            box-shadow: 0 22px 60px rgba(11,29,58,0.1), 0 0 0 1px rgba(200,164,94,0.15);
+            transform: translateY(-4px);
+        }
         .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover::after { opacity: 1; }
+        .service-card:hover .svc-icon {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            box-shadow: 0 8px 24px rgba(200,164,94,0.3);
+        }
+        .service-card:hover .svc-icon svg { color: var(--white); }
         .svc-icon {
-            width: 48px; height: 48px; border-radius: 12px;
-            background: var(--off-white); display: flex; align-items: center; justify-content: center;
-            margin-bottom: 1.3rem;
+            width: 52px; height: 52px; border-radius: 50%;
+            background: var(--gold-pale);
+            border: 1px solid rgba(200,164,94,0.2);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1.4rem;
+            transition: all 0.4s ease;
         }
-        .svc-icon svg { width: 22px; height: 22px; color: var(--gold); }
+        .svc-icon svg { width: 22px; height: 22px; color: var(--gold); transition: color 0.4s ease; }
         .service-card .svc-num {
-            position: absolute; top: 1.5rem; right: 1.5rem;
-            font-size: 0.72rem; font-weight: 700; color: var(--gray-light);
-            letter-spacing: 0.05em;
+            position: absolute; top: 1.2rem; right: 1.4rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem; font-weight: 700;
+            color: rgba(200,164,94,0.12);
+            letter-spacing: 0; line-height: 1;
+            transition: color 0.4s ease;
         }
-        .service-card h3 { font-size: 1.08rem; font-weight: 700; color: var(--navy); margin-bottom: 0.7rem; }
-        .service-card p { color: var(--text-light); font-size: 0.9rem; line-height: 1.7; }
+        .service-card:hover .svc-num { color: rgba(200,164,94,0.25); }
+        .service-card h3 { font-size: 1.08rem; font-weight: 700; color: var(--navy); margin-bottom: 0.7rem; position: relative; z-index: 1; }
+        .service-card p { color: var(--text-light); font-size: 0.9rem; line-height: 1.7; position: relative; z-index: 1; }
 
         /* ══════════════════ QUOTE ══════════════════ */
         .quote-section {
@@ -759,6 +818,7 @@
 
 <!-- ═══ NAV ═══ -->
 <a href="#hero" class="skip-link">Skip to main content</a>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
 <nav id="nav" aria-label="Primary">
     <a href="#" class="logo" aria-label="Bridgevale — home"><span class="logo-bridge">Bridge</span><span class="logo-vale">vale</span></a>
@@ -788,6 +848,24 @@
             <div class="hero-buttons">
                 <a href="#contact" class="btn-primary">Start a Conversation <span class="btn-arrow">&rarr;</span></a>
                 <a href="#services" class="btn-outline">Explore Services</a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hs-num">6+</span>
+                    <span class="hs-label">Senior Experts</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hs-num">10+</span>
+                    <span class="hs-label">Industries</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hs-num">EU+MENA</span>
+                    <span class="hs-label">Coverage</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hs-num">SAP · Digital</span>
+                    <span class="hs-label">Core Focus</span>
+                </div>
             </div>
         </div>
         <div class="hero-visual">
@@ -1270,9 +1348,15 @@
 </footer>
 
 <script>
-// Navbar
+// Navbar + scroll progress bar
 const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+const scrollProgress = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+    const h = document.documentElement;
+    const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
+    scrollProgress.style.width = (scrolled * 100) + '%';
+}, { passive: true });
 
 // Mobile menu
 const toggle = document.getElementById('mobileToggle');
