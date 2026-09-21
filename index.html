@@ -758,7 +758,7 @@
         .footer-inner {
             max-width: 1200px; margin: 0 auto;
             display: grid;
-            grid-template-columns: 1.6fr 1fr 1.2fr;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
             gap: 3rem;
             padding-bottom: 2.5rem;
             border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -1405,6 +1405,10 @@
             <a href="#contact">Contact</a>
         </div>
         <div class="footer-col">
+            <h5>Strategic Partners</h5>
+            <a href="/partners/bairok-consulting/">Bairok Consulting</a>
+        </div>
+        <div class="footer-col">
             <h5>Company</h5>
             <address>
                 Bridgevale Consulting Ltd<br>
@@ -1462,6 +1466,34 @@ const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.12 });
 document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+// Cross-page anchors (e.g. /#experts followed from /partners/...): the scroll
+// the browser performs on load is cancelled by late layout shifts (web fonts,
+// CDN logo images), leaving the visitor at the top. Re-assert the target until
+// the layout settles, unless the visitor has taken over the scroll themselves.
+// Note: behavior 'instant' is required — 'auto' inherits the CSS smooth
+// scrolling above, and each re-assert would cancel the animation in flight.
+(function () {
+    if (!location.hash) return;
+    let target;
+    try { target = document.querySelector(location.hash); } catch (e) { return; }
+    if (!target) return;
+
+    let userScrolled = false;
+    ['wheel', 'touchstart', 'keydown'].forEach(evt =>
+        window.addEventListener(evt, () => { userScrolled = true; }, { once: true, passive: true }));
+
+    const settle = () => {
+        if (userScrolled) return;
+        target.scrollIntoView({ behavior: 'instant' });
+    };
+
+    settle();
+    document.addEventListener('DOMContentLoaded', settle);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(settle);
+    window.addEventListener('load', settle);
+    [60, 200, 600, 1200].forEach(ms => setTimeout(settle, ms));
+})();
 
 </script>
 </body>
