@@ -65,6 +65,9 @@
             --navy-light: #1A3A6E;
             --gold: #C8A45E;
             --gold-light: #E0C882;
+            /* Accessible gold for small text on light backgrounds (>=4.5:1 on white and off-white).
+               --gold stays in use for decorative rules, fills and text on navy. */
+            --gold-ink: #8A6B24;
             --gold-pale: rgba(200,164,94,0.08);
             --white: #FFFFFF;
             --off-white: #F8F6F1;
@@ -75,6 +78,8 @@
             --text: #2C3345;
             --text-light: #5A6178;
             --text-muted: #7C8298;
+            /* Small supporting text on light backgrounds (>=4.9:1 on white and off-white) */
+            --text-soft: #656B7C;
         }
 
         html { scroll-behavior: smooth; }
@@ -315,7 +320,7 @@
         .logos-label {
             text-align: center; font-size: 0.78rem; font-weight: 600;
             text-transform: uppercase; letter-spacing: 0.12em;
-            color: var(--gray); margin-bottom: 2rem;
+            color: var(--text-soft); margin-bottom: 2rem;
         }
         .logos-track-wrapper {
             position: relative; overflow: hidden; padding: 15px 0;
@@ -342,10 +347,10 @@
         /* fallback text style for Covéa */
         .logo-item span.logo-text {
             font-size: 1rem; font-weight: 700; color: var(--navy);
-            letter-spacing: 0.08em; opacity: 0.3; transition: opacity 0.3s;
+            letter-spacing: 0.08em; opacity: 0.65; transition: opacity 0.3s;
             font-family: 'Inter', sans-serif;
         }
-        .logo-item:hover span.logo-text { opacity: 0.6; }
+        .logo-item:hover span.logo-text { opacity: 0.85; }
         @keyframes scrollLogos {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -355,7 +360,7 @@
         section { padding: 7rem 5%; }
         .section-label {
             text-transform: uppercase; letter-spacing: 0.15em;
-            font-size: 0.75rem; font-weight: 600; color: var(--gold);
+            font-size: 0.75rem; font-weight: 600; color: var(--gold-ink);
             margin-bottom: 1rem; display: inline-flex; align-items: center; gap: 0.7rem;
         }
         .section-label::before {
@@ -380,7 +385,10 @@
             display: grid; grid-template-columns: 1fr 1fr;
             gap: 5rem; max-width: 1200px; margin: 0 auto; align-items: center;
         }
-        .about-visual { position: relative; }
+        /* about-text comes first in the DOM so the section h2 precedes the card h3;
+           `order` keeps the visual layout exactly as before. */
+        .about-visual { position: relative; order: 1; }
+        .about-text { order: 2; }
         .about-card {
             background: var(--white); border-radius: 16px; padding: 2.5rem;
             box-shadow: 0 20px 60px rgba(11,29,58,0.07);
@@ -411,7 +419,7 @@
         }
         .stat { text-align: center; }
         .stat .num { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--navy); font-weight: 700; }
-        .stat .label { font-size: 0.78rem; color: var(--gray); margin-top: 0.2rem; }
+        .stat .label { font-size: 0.78rem; color: var(--text-soft); margin-top: 0.2rem; }
 
         /* ══════════════════ SERVICES ══════════════════ */
         .services { background: var(--white); }
@@ -517,8 +525,8 @@
             display: flex; align-items: center; justify-content: center;
             margin: 0 auto 1.3rem; box-shadow: 0 6px 20px rgba(11,29,58,0.15);
         }
-        .step h4 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--navy); }
-        .step p { color: var(--text-muted); font-size: 0.86rem; line-height: 1.7; }
+        .step h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--navy); }
+        .step p { color: var(--text-soft); font-size: 0.86rem; line-height: 1.7; }
 
         /* ══════════════════ EXPERTISE ══════════════════ */
         .expertise { background: var(--white); }
@@ -568,6 +576,8 @@
             font-size: 0.72rem; font-weight: 600; color: var(--gold);
             margin-bottom: 1rem; display: block;
         }
+        /* gold reads fine on the navy stealth card; the white card needs the darker ink */
+        .mode-card.standard .mode-label-tag { color: var(--gold-ink); }
         .mode-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.8rem; }
         .mode-card.stealth h3 { color: var(--white); }
         .mode-card.standard h3 { color: var(--navy); }
@@ -709,7 +719,7 @@
             display: grid; grid-template-columns: 1fr 1.1fr;
             gap: 4rem; max-width: 1100px; margin: 0 auto;
         }
-        .contact-info h3 {
+        .contact-info h2 {
             font-family: 'Playfair Display', serif; font-size: 1.5rem;
             color: var(--navy); margin-bottom: 0.8rem;
         }
@@ -763,7 +773,7 @@
             padding-bottom: 2.5rem;
             border-bottom: 1px solid rgba(255,255,255,0.06);
         }
-        .footer-col h5 {
+        .footer-col h5, .footer-col .fc-title {
             font-size: 0.72rem; font-weight: 700; color: var(--gold);
             letter-spacing: 0.12em; text-transform: uppercase;
             margin-bottom: 1.1rem;
@@ -790,9 +800,14 @@
             display: flex; justify-content: space-between; align-items: center;
             flex-wrap: wrap; gap: 1rem;
         }
-        .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.35); margin: 0; }
+        .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin: 0; }
         .footer-bottom .meta { display: flex; gap: 1.4rem; }
-        .footer-bottom .meta span { font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+        .footer-bottom .meta span { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+        .footer-bottom .meta a {
+            font-size: 0.78rem; color: rgba(255,255,255,0.5);
+            text-decoration: none; transition: color 0.3s;
+        }
+        .footer-bottom .meta a:hover { color: var(--gold); }
 
         /* ══════════════════ LEGAL ══════════════════ */
         .legal {
@@ -800,7 +815,7 @@
             border-top: 1px solid var(--gray-light);
         }
         .legal-inner { max-width: 1200px; margin: 0 auto; }
-        .legal-inner h3 {
+        .legal-inner h2 {
             font-family: 'Playfair Display', serif; font-size: 1.4rem;
             color: var(--navy); margin-bottom: 2rem; font-weight: 700;
         }
@@ -812,7 +827,7 @@
             background: var(--white); border-radius: 12px; padding: 1.8rem;
             border: 1px solid var(--gray-light);
         }
-        .legal-block h4 {
+        .legal-block h3 {
             font-size: 0.92rem; font-weight: 700; color: var(--navy);
             margin-bottom: 0.8rem;
         }
@@ -821,8 +836,13 @@
             margin-bottom: 0.6rem;
         }
         .legal-block p:last-child { margin-bottom: 0; }
-        .legal-block a { color: var(--gold); text-decoration: none; }
-        .legal-block a:hover { text-decoration: underline; }
+        /* underlined at rest: colour alone must not be the only cue */
+        .legal-block a {
+            color: var(--gold-ink);
+            text-decoration: underline;
+            text-underline-offset: 0.18em;
+        }
+        .legal-block a:hover { color: var(--navy); }
         @media (max-width: 768px) {
             .legal-grid { grid-template-columns: 1fr; }
         }
@@ -844,6 +864,7 @@
             .hero-buttons { justify-content: center; }
             .hero-visual { display: none; }
             .about-grid, .expertise-grid, .contact-grid { grid-template-columns: 1fr; }
+            .about-text { order: 1; }
             .about-visual { order: 2; }
             .services-grid { grid-template-columns: 1fr 1fr; }
             .how-steps { grid-template-columns: 1fr 1fr; }
@@ -976,16 +997,6 @@
 <!-- ═══ ABOUT ═══ -->
 <section class="about" id="about">
     <div class="about-grid">
-        <div class="about-visual">
-            <div class="about-card fade-in">
-                <div class="ic">
-                    <svg aria-hidden="true" focusable="false" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                </div>
-                <h3>Consultant Support Network</h3>
-                <p>A trusted system where senior, highly specialized consultants help junior or generalist consultants on specific topics — while also being able to staff consultants directly to end clients when needed.</p>
-            </div>
-            <div class="about-float fade-in">SAP &amp; Digital<small>Core Focus</small></div>
-        </div>
         <div class="about-text">
             <span class="section-label">Who We Are</span>
             <h2 class="section-title">Strengthening Delivery,<br>Without the Friction</h2>
@@ -997,6 +1008,16 @@
                 <div class="stat"><div class="num">Digital</div><div class="label">AI, Data &amp; Cloud</div></div>
                 <div class="stat"><div class="num">EU+MENA</div><div class="label">Coverage</div></div>
             </div>
+        </div>
+        <div class="about-visual">
+            <div class="about-card fade-in">
+                <div class="ic">
+                    <svg aria-hidden="true" focusable="false" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h3>Consultant Support Network</h3>
+                <p>A trusted system where senior, highly specialized consultants help junior or generalist consultants on specific topics — while also being able to staff consultants directly to end clients when needed.</p>
+            </div>
+            <div class="about-float fade-in">SAP &amp; Digital<small>Core Focus</small></div>
         </div>
     </div>
 </section>
@@ -1072,22 +1093,22 @@
     <div class="how-steps">
         <div class="step fade-in">
             <div class="step-num">01</div>
-            <h4>Brief &amp; Scope</h4>
+            <h3>Brief &amp; Scope</h3>
             <p>Share your challenge, context, and timeline. We assess the skills needed and the best engagement model.</p>
         </div>
         <div class="step fade-in fade-in-delay-1">
             <div class="step-num">02</div>
-            <h4>Match &amp; Mobilize</h4>
+            <h3>Match &amp; Mobilize</h3>
             <p>We identify the right senior specialist from our curated network and align on working mode.</p>
         </div>
         <div class="step fade-in fade-in-delay-2">
             <div class="step-num">03</div>
-            <h4>Deliver &amp; Support</h4>
+            <h3>Deliver &amp; Support</h3>
             <p>The expert engages — handling technical workload, reviewing deliverables, and ensuring quality.</p>
         </div>
         <div class="step fade-in fade-in-delay-3">
             <div class="step-num">04</div>
-            <h4>Learn &amp; Grow</h4>
+            <h3>Learn &amp; Grow</h3>
             <p>Through joint sessions and structured shadowing, knowledge transfers naturally for long-term autonomy.</p>
         </div>
     </div>
@@ -1332,7 +1353,7 @@
     <div class="contact-grid">
         <div class="contact-info fade-in">
             <span class="section-label">Contact</span>
-            <h3>Let's Build Something Together</h3>
+            <h2>Let's Build Something Together</h2>
             <p>Tell us about your context, challenge, or staffing needs. We'll get back to you within 24 hours with a tailored approach.</p>
             <div class="c-detail">
                 <div class="ico"><svg aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
@@ -1359,28 +1380,28 @@
 <!-- ═══ LEGAL ═══ -->
 <section class="legal" id="legal">
     <div class="legal-inner">
-        <h3>Legal Notice</h3>
+        <h2>Legal Notice</h2>
         <div class="legal-grid">
             <div class="legal-block">
-                <h4>Company Information</h4>
+                <h3>Company Information</h3>
                 <p><strong>Bridgevale Consulting Ltd</strong> is a Private Limited Company registered in England and Wales under company number <strong>16914928</strong>.</p>
                 <p>Registered office: 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom.</p>
                 <p>Incorporated on 16 December 2025.</p>
                 <p>SIC codes: 62020 (IT Consultancy), 62030 (Computer Facilities Management), 62090 (Other IT Services), 70229 (Management Consultancy).</p>
             </div>
             <div class="legal-block">
-                <h4>Role &amp; Intermediary Status</h4>
+                <h3>Role &amp; Intermediary Status</h3>
                 <p>Bridgevale Consulting Ltd operates as an <strong>intermediary platform</strong> connecting independent consultants with client organizations seeking specialized expertise. Bridgevale does not substitute for the consultant's own professional judgment or liability.</p>
                 <p>Consultants listed on this website are independent professionals. Bridgevale facilitates the matching, contractual framework, and administrative coordination between consultants and end clients.</p>
                 <p>Bridgevale is not the employer of the consultants presented on this platform. Each engagement is governed by a separate service agreement between the relevant parties.</p>
             </div>
             <div class="legal-block">
-                <h4>Liability &amp; Disclaimer</h4>
+                <h3>Liability &amp; Disclaimer</h3>
                 <p>Bridgevale Consulting Ltd acts in good faith to match qualified professionals with client needs. However, Bridgevale does not guarantee the outcomes of any engagement and shall not be held liable for any direct or indirect damages arising from the services delivered by independent consultants.</p>
                 <p>All information presented on this website is provided for general informational purposes. Bridgevale reserves the right to update consultant availability, profiles, and service descriptions at any time without prior notice.</p>
             </div>
             <div class="legal-block">
-                <h4>Data Protection</h4>
+                <h3>Data Protection</h3>
                 <p>Any personal data collected through this website (via email inquiries) is processed in accordance with applicable data protection regulations, including the UK GDPR. Data is used solely for the purpose of responding to your inquiry and is not shared with third parties without your consent.</p>
                 <p>For any data-related requests, please contact: <a href="mailto:operations@bridgevaleconsulting.com">operations@bridgevaleconsulting.com</a>.</p>
             </div>
@@ -1396,7 +1417,7 @@
             <p class="footer-tagline">Expert consultant support network. Senior specialists for SAP, Data, AI, Cloud &amp; IT Governance across Europe and MENA.</p>
         </div>
         <div class="footer-col">
-            <h5>Navigation</h5>
+            <h2 class="fc-title">Navigation</h2>
             <a href="#about">Who We Are</a>
             <a href="#services">Services</a>
             <a href="#expertise">Expertise</a>
@@ -1405,11 +1426,11 @@
             <a href="#contact">Contact</a>
         </div>
         <div class="footer-col">
-            <h5>Strategic Partners</h5>
+            <h2 class="fc-title">Strategic Partners</h2>
             <a href="/partners/bairok-consulting/">Bairok Consulting</a>
         </div>
         <div class="footer-col">
-            <h5>Company</h5>
+            <h2 class="fc-title">Company</h2>
             <address>
                 Bridgevale Consulting Ltd<br>
                 71-75 Shelton Street<br>
