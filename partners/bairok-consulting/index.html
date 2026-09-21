@@ -279,7 +279,12 @@
             max-width: 64ch;
         }
 
-        /* Wordmark placeholder — swap for the official Bairok logo when supplied */
+        /* Partner lockup: the official Bairok mark next to the company name */
+        .lockup { display: flex; align-items: center; gap: 1.5rem; }
+        .partner-logo {
+            width: 112px; height: auto; flex: none;
+            display: block;
+        }
         .wordmark-plate {
             margin-top: 3.4rem; padding-top: 2.4rem;
             border-top: 1px solid rgba(255,255,255,0.09);
@@ -288,7 +293,7 @@
         }
         .wordmark {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+            font-size: clamp(1.5rem, 3vw, 2.1rem);
             font-weight: 700; color: var(--white);
             letter-spacing: 0.01em; line-height: 1.1;
         }
@@ -653,6 +658,8 @@
                 gap: 1rem; backdrop-filter: blur(16px);
             }
             .wordmark-plate { flex-direction: column; align-items: flex-start; gap: 1.8rem; }
+            .lockup { gap: 1.1rem; }
+            .partner-logo { width: 88px; }
             .facts { gap: 1.6rem 2rem; }
             .step { grid-template-columns: 2.2rem 1fr; gap: 1rem; }
             .footer-inner { grid-template-columns: 1fr; gap: 2rem; text-align: left; }
@@ -715,14 +722,21 @@
         <p class="designation-note">&ldquo;Platinum Delivery Partner&rdquo; is a Bridgevale Consulting partnership designation and does not represent an SAP certification or partner tier.</p>
 
         <!--
-            Typographic wordmark placeholder.
-            Replace this block with the official Bairok Consulting logo file
-            once it has been supplied by the partner.
+            Partner lockup. assets/bairok-logo-light.png is the official Bairok
+            "BRK Consulting" mark, prepared for dark backgrounds; the original
+            dark version sits alongside it as assets/bairok-logo.png.
+            The image is alt="" because the company name is adjacent as text.
         -->
         <div class="wordmark-plate">
-            <div>
-                <p class="wordmark">Bairok <span>Consulting</span></p>
-                <p class="wordmark-sub">Tailored ERP Solutions, Empowering Global Organizations</p>
+            <div class="lockup">
+                <img class="partner-logo" alt=""
+                     src="assets/bairok-logo-light.png"
+                     srcset="assets/bairok-logo-light.png 1x, assets/bairok-logo-light@2x.png 2x"
+                     width="400" height="403" decoding="async">
+                <div>
+                    <p class="wordmark">Bairok <span>Consulting</span></p>
+                    <p class="wordmark-sub">Tailored ERP Solutions, Empowering Global Organizations</p>
+                </div>
             </div>
             <dl class="facts">
                 <div class="fact"><dt>Headquarters</dt><dd>Dubai, UAE</dd></div>
